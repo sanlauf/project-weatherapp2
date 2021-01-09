@@ -30,7 +30,7 @@ spec:
         ports:
         - name: http
           protocol: TCP
-          containerPort: 8080
+          containerPort: 4200
         env:
         - name: DT_CUSTOM_PROP
           value: "version={{ .Chart.Version }} revision={{ .Release.Revision }} releasename={{ .Release.Name }} keptn_project={{ .Values.keptn.project }} keptn_service={{ .Values.keptn.service }} keptn_stage={{ .Values.keptn.stage }} keptn_deployment={{ .Values.keptn.deployment }}"
@@ -57,14 +57,14 @@ spec:
         livenessProbe:
           httpGet:
             path: /health
-            port: 8080
+            port: 4200
           initialDelaySeconds: 60
           periodSeconds: 10
           timeoutSeconds: 15
         readinessProbe:
           httpGet:
             path: /health
-            port: 8080
+            port: 4200
           initialDelaySeconds: 60
           periodSeconds: 10
           timeoutSeconds: 15
